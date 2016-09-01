@@ -1,0 +1,20 @@
+# Simple Echo API for IBM API Connect
+
+You can import this API into your API Connect instance for a quick and easy test API.
+
+Install the API Connect CLI
+
+    npm install -g apiconnect
+
+Login to your API Connect environment
+
+    apic login
+
+
+Publish the API
+
+    apic publish simple_test.yaml --server *server* --organization *org-name* --catalog sb
+
+Call the API
+
+    curl https://<api_hostname>/<org-name>/sb/echo/get?text=hello
