@@ -1,0 +1,29 @@
+product: 1.0.0
+info:
+  name: simple-test
+  title: Simple API
+  version: 1.0.0
+  contact:
+    name: Ricky Moorhouse
+    email: moorh@uk.ibm.com
+visibility:
+  view:
+    enabled: true
+    type: public
+    tags: []
+    orgs: []
+  subscribe:
+    enabled: true
+    type: authenticated
+    tags: []
+    orgs: []
+apis:
+  Echo-API:
+    $ref: echo.yaml
+plans:
+  Default:
+    title: Default
+    rate-limit:
+      hard-limit: true
+      value: 50/10second
+    apis: {}

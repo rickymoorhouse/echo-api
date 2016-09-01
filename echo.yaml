@@ -1,0 +1,68 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: Echo API
+  x-ibm-name: echo-api
+  contact:
+    name: Ricky Moorhouse
+    email: moorh@uk.ibm.com
+host: $(catalog.host)
+basePath: /echo
+paths:
+  /get:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+          schema:
+            $ref: '#/definitions/responseObject'
+      parameters:
+        - $ref: '#/parameters/text'
+security: []
+x-ibm-configuration:
+  assembly:
+    execute:
+      - operation-switch:
+          title: operation-switch
+          case:
+            - operations:
+                - verb: get
+                  path: /get
+              execute:
+                - map:
+                    title: map
+                    inputs:
+                      inputText:
+                        schema:
+                          type: string
+                        variable: request.parameters.text
+                    outputs:
+                      output:
+                        schema:
+                          $ref: '#/definitions/responseObject'
+                        variable: message.body
+                        content: application/json
+                    actions:
+                      - set: output.text
+                        from: inputText
+  gateway: datapower-gateway
+  enforced: true
+  testable: true
+  phase: realized
+  cors:
+    enabled: true
+produces:
+  - application/json
+parameters:
+  text:
+    name: text
+    type: string
+    required: false
+    in: query
+    description: Text passed in
+definitions:
+  responseObject:
+    properties:
+      text:
+        type: string
+
