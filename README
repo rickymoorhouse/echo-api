@@ -1,6 +1,13 @@
-# Simple Echo API for IBM API Connect
 
 You can import this API into your API Connect instance for a quick and easy test API.
+
+# Simple Echo API for IBM API Connect v2018
+
+You can import this API into your API Connect instance  using the UI.  (toolkit commands to follow)
+
+
+# Simple Echo API for IBM API Connect v5
+
 
 Install the API Connect CLI
 
